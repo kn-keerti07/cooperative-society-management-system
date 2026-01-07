@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cooperative Society Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a56d4;
+      --accent: #7209b7;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gray: #6c757d;
+      --danger: #ef233c;
+      --success: #4cc9f0;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+    
+    .login-container {
+      width: 420px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+    }
+    
+    .language-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid #e0e0e0;
+      border-radius: 20px;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .language-toggle:hover {
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .language-toggle i {
+      margin-right: 5px;
+      color: var(--primary);
+    }
+    
+    .language-toggle span {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    .login-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .login-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+    }
+    
+    .login-icon i {
+      font-size: 36px;
+      color: white;
+    }
+    
+    .login-header h2 {
+      font-size: 28px;
+      color: var(--dark);
+      margin-bottom: 5px;
+      transition: all 0.3s;
+    }
+    
+    .login-header p {
+      color: var(--gray);
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+    
+    .input-group {
+      position: relative;
+      margin-bottom: 25px;
+    }
+    
+    .input-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray);
+    }
+    
+    .input-field {
+      width: 100%;
+      padding: 15px 15px 15px 45px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .input-field:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+      outline: none;
+    }
+    
+    .password-toggle {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray);
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    
+    .password-toggle:hover {
+      color: var(--primary);
+    }
+    
+    .options-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+    
+    .remember-me {
+      display: flex;
+      align-items: center;
+    }
+    
+    .remember-me input {
+      margin-right: 8px;
+      accent-color: var(--primary);
+    }
+    
+    .remember-me label {
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+    
+    .forgot-password {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+    
+    .forgot-password:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+    
+    .captcha-container {
+      background: rgba(240, 240, 240, 0.7);
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 25px;
+      border: 1px dashed #ddd;
+    }
+    
+    .captcha-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .captcha-header i {
+      color: var(--primary);
+      margin-right: 8px;
+    }
+    
+    .captcha-header span {
+      font-size: 14px;
+      color: var(--dark);
+      transition: all 0.3s;
+    }
+    
+    .captcha-display {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .captcha-text {
+      flex: 1;
+      font-family: 'Courier New', monospace;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 5px;
+      padding: 10px;
+      background: white;
+      border-radius: 5px;
+      text-align: center;
+      color: var(--dark);
+      text-decoration: line-through;
+      text-decoration-color: var(--danger);
+      user-select: none;
+    }
+    
+    .refresh-captcha {
+      background: none;
+      border: none;
+      color: var(--primary);
+      font-size: 18px;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: transform 0.3s;
+    }
+    
+    .refresh-captcha:hover {
+      transform: rotate(90deg);
+    }
+    
+    .captcha-input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    
+    .captcha-error {
+      color: var(--danger);
+      font-size: 13px;
+      margin-top: 5px;
+      display: none;
+    }
+    
+    .login-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+    }
+    
+    .login-btn:hover {
+      background: linear-gradient(45deg, var(--primary-dark), #6700a8);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+    }
+    
+    .login-btn:active {
+      transform: translateY(0);
+    }
+    
+    @media (max-width: 480px) {
+      .login-container {
+        width: 90%;
+        padding: 30px;
+      }
+      
+      .login-icon {
+        width: 70px;
+        height: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="language-toggle" id="languageToggle">
+      <i class="fas fa-language"></i>
+      <span id="languageText">English</span>
+    </div>
+    
+    <div class="login-header">
+      <div class="login-icon">
+        <i class="fas fa-handshake"></i>
+      </div>
+      <h2 id="welcomeText">Welcome</h2>
+      <p id="loginPrompt">Login to access your cooperative account</p>
+    </div>
+    
+    <form id="loginForm" method="post" action="logcheck.php">
+      <div class="input-group">
+        <i class="fas fa-user input-icon"></i>
+        <input type="text" class="input-field" id="usernameInput" name="username" placeholder="Username" required>
+      </div>
+      
+      <div class="input-group">
+        <i class="fas fa-lock input-icon"></i>
+        <input type="password" id="password" name="password" class="input-field" placeholder="Password" required>
+        <i class="fas fa-eye password-toggle" id="togglePassword"></i>
+      </div>
+      
+      <div class="options-row">
+        <label class="remember-me">
+          <input type="checkbox" id="remember" name="remember">
+          <span id="rememberText">Remember me</span>
+        </label>
+        <a href="forgot.php" class="forgot-password" id="forgotPassword">Forgot password?</a>
+      </div>
+      
+      <div class="captcha-container">
+        <div class="captcha-header">
+          <i class="fas fa-shield-alt"></i>
+          <span id="captchaPrompt">Verify you're human</span>
+        </div>
+        <div class="captcha-display">
+          <div class="captcha-text" id="captchaText"></div>
+          <button type="button" class="refresh-captcha" id="refreshCaptcha">
+            <i class="fas fa-sync-alt"></i>
+          </button>
+        </div>
+        <input type="text" class="captcha-input" id="captchaInput" name="captcha" placeholder="Enter the CAPTCHA code" required>
+        <div class="captcha-error" id="captchaError">Incorrect CAPTCHA. Please try again.</div>
+      </div>
+      
+      <input type="submit" class="login-btn" name="submit" value="Login to Dashboard" id="loginButton">
+    </form>
+  </div>
+
+  <script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
+    const loginForm = document.querySelector('#loginForm');
+    const captchaText = document.querySelector('#captchaText');
+    const captchaInput = document.querySelector('#captchaInput');
+    const refreshCaptcha = document.querySelector('#refreshCaptcha');
+    const captchaError = document.querySelector('#captchaError');
+    const languageToggle = document.querySelector('#languageToggle');
+    const languageText = document.querySelector('#languageText');
+    
+    // Language content
+    const content = {
+      en: {
+        welcome: "Welcome",
+        loginPrompt: "Login to access your cooperative account",
+        username: "Username",
+        password: "Password",
+        remember: "Remember me",
+        forgotPassword: "Forgot password?",
+        captchaPrompt: "Verify you're human",
+        captchaPlaceholder: "Enter the CAPTCHA code",
+        captchaError: "Incorrect CAPTCHA. Please try again.",
+        loginButton: "Login to Dashboard",
+        switchLanguage: "ಕನ್ನಡ"
+      },
+      kn: {
+        welcome: "ಸ್ವಾಗತ",
+        loginPrompt: "ನಿಮ್ಮ ಸಹಕಾರಿ ಖಾತೆಗೆ ಪ್ರವೇಶಿಸಲು ಲಾಗಿನ್ ಮಾಡಿ",
+        username: "ಬಳಕೆದಾರ ಹೆಸರು",
+        password: "ಗುಪ್ತಪದ",
+        remember: "ನನ್ನನ್ನು ನೆನಪಿಡಿ",
+        forgotPassword: "ಪಾಸ್ವರ್ಡ್ ಮರೆತಿರಾ?",
+        captchaPrompt: "ನೀವು ಮಾನವರೆಂದು ಪರಿಶೀಲಿಸಿ",
+        captchaPlaceholder: "CAPTCHA ಕೋಡ್ ನಮೂದಿಸಿ",
+        captchaError: "ತಪ್ಪಾದ CAPTCHA. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+        loginButton: "ಡ್ಯಾಶ್ಬೋರ್ಡ್ಗೆ ಲಾಗಿನ್ ಮಾಡಿ",
+        switchLanguage: "English"
+      }
+    };
+    
+    let currentLanguage = 'en';
+    let captchaSolution;
+    
+    // Toggle language
+    function toggleLanguage() {
+      currentLanguage = currentLanguage === 'en' ? 'kn' : 'en';
+      updateContent();
+    }
+    
+    // Update all text content based on current language
+    function updateContent() {
+      const lang = content[currentLanguage];
+      
+      // Update all text elements
+      document.getElementById('welcomeText').textContent = lang.welcome;
+      document.getElementById('loginPrompt').textContent = lang.loginPrompt;
+      document.getElementById('usernameInput').placeholder = lang.username;
+      document.getElementById('password').placeholder = lang.password;
+      document.getElementById('rememberText').textContent = lang.remember;
+      document.getElementById('forgotPassword').textContent = lang.forgotPassword;
+      document.getElementById('captchaPrompt').textContent = lang.captchaPrompt;
+      document.getElementById('captchaInput').placeholder = lang.captchaPlaceholder;
+      document.getElementById('captchaError').textContent = lang.captchaError;
+      document.getElementById('loginButton').value = lang.loginButton;
+      languageText.textContent = lang.switchLanguage;
+    }
+    
+    // Generate random alphanumeric CAPTCHA
+    function generateCaptcha() {
+      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+      let result = '';
+      const length = 6;
+      
+      for (let i = 0; i < length; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      
+      captchaSolution = result;
+      captchaText.textContent = result;
+      captchaInput.value = '';
+      captchaError.style.display = 'none';
+    }
+    
+    // Toggle password visibility
+    togglePassword.addEventListener('click', function() {
+      const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+      password.setAttribute('type', type);
+      this.classList.toggle('fa-eye');
+      this.classList.toggle('fa-eye-slash');
+    });
+    
+    // Refresh CAPTCHA
+    refreshCaptcha.addEventListener('click', generateCaptcha);
+    
+    // Form submission with CAPTCHA validation
+    loginForm.addEventListener('submit', function(e) {
+      const userInput = captchaInput.value.trim();
+      
+      if(userInput === '' || userInput !== captchaSolution) {
+        e.preventDefault();
+        captchaError.style.display = 'block';
+        generateCaptcha();
+        return false;
+      }
+      
+      // CAPTCHA verified - allow form submission
+      // The form will now submit to logcheck.php with all form data
+    });
+    
+    // Language toggle event
+    languageToggle.addEventListener('click', toggleLanguage);
+    
+    // Initialize
+    generateCaptcha();
+  </script>
+</body>
+</html>

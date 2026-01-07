@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooperative Society</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Date-Time Bar */
+        .datetime-bar {
+            background-color: #002244;
+            color: white;
+            padding: 8px 15px;
+            text-align: right;
+            font-size: 14px;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            text-align: center;
+            background: #003366;
+            padding: 10px 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('society1.jpg') no-repeat center center/cover;
+            height: 400px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h2 {
+            font-size: 36px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-top: 10px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .btn {
+            margin-top: 15px;
+            padding: 12px 20px;
+            background: #ffcc00;
+            color: #003366;
+            font-size: 18px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .btn:hover {
+            background: #ff9900;
+        }
+
+        /* Sections */
+        .section {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .section h2 {
+            margin-bottom: 15px;
+            font-size: 28px;
+            color: #003366;
+        }
+
+        .section p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Features Section */
+        .features {
+            background: #fff;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 40px;
+        }
+
+        .feature-box {
+            width: 30%;
+            padding: 20px;
+            background: #004080;
+            color: white;
+            text-align: center;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        .feature-box h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #003366;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .contact p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #002244;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Date-Time Display -->
+    <div class="datetime-bar" id="datetime">
+        Loading date and time...
+    </div>
+
+    <!-- Header -->
+    <header>
+        <h1>Menasi Seemeya Group Gramagala Seva Sahakari Sangha Niyamita Vanalli</h1>
+    </header>
+
+    <!-- Navigation -->
+  <?php include('nav.php'); ?>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Welcome to Our Cooperative Society</h2>
+        <p>Your trusted partner in financial security and savings.</p>
+        
+    </section>
+
+    <!-- About Us Section -->
+    <section class="section">
+        <h2>About Us</h2>
+        <p>We are a trusted cooperative society offering financial services to our members, ensuring a secure and bright future.</p>
+    </section>
+
+    <!-- Key Features -->
+    <section class="features">
+        <div class="feature-box">
+            <h3>Savings & Deposits</h3>
+            <p>Secure your money with our high-interest savings accounts.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Easy Withdrawals</h3>
+            <p>Withdraw funds anytime with our hassle-free process.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Balance Inquiry</h3>
+            <p>Check your account balance in real-time.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Transaction Extract</h3>
+            <p>View detailed transaction reports anytime.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Exclusive Products</h3>
+            <p>Get access to financial products tailored to your needs.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <p>Email: mss@mssvanalli.com</p>
+        <p>Phone: 08283-298242</p>
+        <p>Address: @Sirsi , Vanalli</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 MSS. All Rights Reserved. Powered by MSS</p>
+    </footer>
+
+    <script>
+        // Function to update date and time
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            };
+            const dateTimeStr = now.toLocaleDateString('en-IN', options);
+            document.getElementById('datetime').textContent = dateTimeStr;
+        }
+
+        // Update immediately
+        updateDateTime();
+
+        // Update every second
+        setInterval(updateDateTime, 1000);
+    </script>
+</body>
+</html>

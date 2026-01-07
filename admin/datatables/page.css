@@ -1,0 +1,267 @@
+
+
+
+.dataTables_length select
+{
+    width: 75px;
+    margin-right: 3px;
+}
+
+.dataTables_filter { }
+
+.dataTables_filter label
+{
+    float: right;
+}
+
+.dataTables_info
+{
+    padding-top: 9px;
+}
+
+.dataTables_paginate
+{
+    float: right;
+    margin: 0;
+}
+
+.dataTable
+{
+    float: right;
+	clear: both;
+}
+
+.dataTable thead th:not(:last-child).sorting_asc, 
+.dataTable thead th:not(:last-child).sorting_desc, 
+.dataTable tbody tr td:not(:last-child).sorting_1
+{
+    border-right: 1px solid #ccc;
+}
+
+.dataTable thead th:not(:first-child).sorting_asc, 
+.dataTable thead th:not(:first-child).sorting_desc, 
+.dataTable tbody tr td:not(:first-child).sorting_1
+{
+    border-left: 1px solid #ccc;
+}
+
+.dataTable tbody tr.odd td.sorting_1
+{
+    background-color: #ededed;
+}
+
+.dataTable tbody tr.even td.sorting_1
+{
+    background-color: #f9f9f9;
+}
+
+.dataTable thead .sorting,
+.dataTable thead .sorting_asc,
+.dataTable thead .sorting_desc,
+.dataTable thead .sorting_asc_disabled,
+.dataTable thead .sorting_desc_disabled
+{
+    cursor: pointer;
+    *cursor: hand;
+    padding-right: 19px;
+    outline: none;
+}
+
+
+.DTTT_selectable tbody tr
+{
+    cursor: pointer;
+    *cursor: hand;
+}
+
+.DTTT .btn > span
+{
+    font-size: 11px;
+    display: inline-block;
+}
+
+.DTTT .btn > span [class^="icon-"], 
+.DTTT .btn > span [class^="icol-"], 
+.DTTT .btn > span [class^="icos-"]
+{
+    line-height: 1;
+    margin: 0 2px 0 0;
+    font-size: 16px;
+}
+
+.DTTT .btn:hover
+{
+    text-decoration: none !important;
+}
+
+.DTTT_dropdown.dropdown-menu a
+{
+    color: #333 !important;
+ /* needed only when demo_page.css is included */;
+}
+
+.DTTT_dropdown.dropdown-menu li:hover a
+{
+    background-color: #0088cc;
+    color: white !important;
+}
+
+/* TableTools information display */
+.DTTT_print_info.modal
+{
+    height: 150px;
+    margin-top: -75px;
+    text-align: center;
+}
+
+.DTTT_print_info h6
+{
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 28px;
+    margin: 1em;
+}
+
+.DTTT_print_info p
+{
+    font-size: 14px;
+    line-height: 20px;
+}
+
+/* DataTables Fixed Column Styling
+================================================== */
+.widget .widget-content.table-container, .widget .widget-content .table-container {
+border: 0;
+padding: 0;
+}
+
+.form-inline {
+margin-bottom: 0;
+}
+.dataTables_wrapper .dt_header, .dataTables_wrapper .dt_footer {
+padding: 10px;
+
+}
+.row-fluid {
+width: 100%;
+}
+.row-fluid [class*="span"]:first-child {
+margin-left: 0;
+}
+.row-fluid .span6 {
+width: 48.717948717948715%;
+}
+.row-fluid [class*="span"] {
+display: block;
+width: 100%;
+min-height: 30px;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+float: left;
+margin-left: 2.564102564102564%;
+}
+.pagination ul {
+display: inline-block;
+margin-left: 0;
+margin-bottom: 0;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+ul, ol {
+padding: 0;
+margin: 0 0 9px 25px;
+}
+user agent stylesheetul, menu, dir {
+display: block;
+list-style-type: disc;
+-webkit-margin-before: 1em;
+-webkit-margin-after: 1em;
+-webkit-margin-start: 0px;
+-webkit-margin-end: 0px;
+-webkit-padding-start: 40px;
+}
+.pagination ul>li {
+display: inline;
+}
+
+.DTFC_LeftHeadWrapper table,
+.DTFC_LeftFootWrapper table,
+.DTFC_Cloned tr.even
+{
+    background-color: white;
+}
+
+.DTFC_LeftHeadWrapper table
+{
+    margin-bottom: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.DTFC_LeftHeadWrapper table thead tr:last-child th:first-child,
+.DTFC_LeftHeadWrapper table thead tr:last-child td:first-child
+{
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.DTFC_LeftBodyWrapper table
+{
+    border-top: none;
+    margin-bottom: 0 !important;
+}
+
+.DTFC_LeftBodyWrapper tbody tr:first-child th,
+.DTFC_LeftBodyWrapper tbody tr:first-child td
+{
+    border-top: none;
+}
+
+.DTFC_LeftFootWrapper table
+{
+    border-top: none;
+}
+.dataTables_paginate
+{
+    float: right;
+    margin: 0;
+}
+
+.pagination{
+	margin: 5px auto;
+	padding: 12px 0;
+	text-align: center;
+}
+.pagination a{ 
+	border:solid 1px #d2d2d2; 
+	color: #444444;  
+	margin-right:2px; 
+}
+.pagination span{ 
+	border:solid 1px #ddd; 
+	margin-right:2px; 
+}
+.pagination .active{
+	border:solid 1px #e0e0e0; 
+	color:#000; 
+	font-weight:bold;  
+}
+.pagination a:link, .pagination a:visited{
+	padding:6px 10px; 
+	text-decoration:none; 
+}
+.pagination span{ 
+	color:#b6b6b6; 
+	padding:6px 10px; 
+	text-decoration:none; 
+}
+.pagination a:hover{ 
+	border:solid 1px #b2b2b2; 
+}
+
